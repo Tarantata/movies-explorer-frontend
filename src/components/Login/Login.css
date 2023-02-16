@@ -1,0 +1,166 @@
+.login {
+  max-width: 1280px;
+  width: 100vw;
+  height: 100vh;
+  background-color: #FAFAFA;
+}
+
+.login__section {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 396px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+.login__title {
+  margin: 0;
+  padding: 0;
+  padding-top: 40px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  color: #000000;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  padding-top: 40px;
+  max-height: 336px;
+}
+
+.login__form-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  color: #A0A0A0;
+  cursor: pointer;
+}
+
+.login__input {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 0;
+  color: #000000;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+  transition: border-color .3s;
+}
+
+.login__input:hover {
+  border-color: #000000;
+}
+
+.login__input:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+.login__error-message {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  color: #EE3465;
+}
+
+.login__info-message {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+}
+
+.login__submit-button {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  padding: 13px 0 15px;
+  color: #FFFFFF;
+  background-color: #3456F3;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: opacity .3s ease-in-out;
+}
+
+.login__submit-button:hover {
+  opacity: .6;
+}
+
+.login__submit-button_invalid {
+  cursor: default;
+  opacity: .6
+}
+
+.login__signup {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+.login__signup-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+  color: #A0A0A0;
+}
+
+.login__signup-link {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #3456F3;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 6px;
+  transition: opacity .3s ease-in-out;
+}
+
+.login__signup-link:hover {
+  opacity: .6;
+}
+
+@media (max-width: 460px) {
+  .login__section {
+    max-width: 260px;
+    padding: 56px 0;
+    align-items: center;
+  }
+
+  .login__title {
+    padding-top: 52px;
+  }
+
+  .login__form {
+    padding-top: 78px;
+    margin-bottom: 312px;
+  }
+
+  .login__submit-button {
+    width: 260px;
+    font-size: 12px;
+  }
+
+  .login__signup-text {
+    font-size: 12px;
+  }
+
+  .login__signup-link {
+    font-size: 12px;
+  }
+}

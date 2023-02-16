@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  height: 60px;
+  max-width: 1280px;
+  width: 100%;
+}
+
+.header__case {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 70px;
+  background-color: #FAFAFA;
+}
+
+@media (max-width: 1130px) {
+
+  .header {
+    height: 74px;
+  }
+
+  .header__case {
+    padding: 18px 29px;
+  }
+}
+
+@media (max-width: 460px) {
+  .header__case {
+    width: 100%;
+    min-width: 280px;
+    padding: 18px 18px 18px 14px;
+  }
+}
+
