@@ -60,7 +60,18 @@
   color: #000000;
 }
 
-@media (max-width: 698px) {
+@media (max-width: 800px) {
+  .short-film__case {
+    padding: 10px 19px;
+  }
+
+  .short-film__description {
+    font-size: 13px;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 678px) {
   .short-film__case {
     margin: 45px 10px 55px;
     border: none;

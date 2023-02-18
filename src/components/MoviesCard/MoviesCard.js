@@ -28,7 +28,7 @@ function MoviesCard() {
          rel="noreferrer">
         <img className="movies-card__img"
           src={require('../../images/example.jpg')}
-          alt={""}
+          alt={"кадр из фильма"}
         />
       </a>
     </div>

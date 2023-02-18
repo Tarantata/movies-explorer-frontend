@@ -93,18 +93,24 @@
 }
 
 .about-me__image {
-  min-width: 255px;
+  max-width: 270px;
   width: 100%;
   border-radius: 10px;
   grid-area: image;
   justify-self: end;
 }
 
+@media (max-width: 870px) {
+  .about-me__list-item {
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .about-me__case {
     padding: 88px 50px 0 50px;
     max-width: 768px;
-    grid-gap: 50px;
+    grid-gap: 8px;
     grid-row-gap: 66px;
   }
 
@@ -122,6 +128,7 @@
     font-size: 12px;
     line-height: 18px;
     padding-top: 20px;
+    max-width: 364px;
   }
 
   .about-me__image {
@@ -129,9 +136,10 @@
   }
 }
 
-@media (max-width: 620px) {
-  .about-me__list-item {
-    margin-top: 20px;
+@media (max-width: 710px) {
+  .about-me__text {
+    max-width: 320px;
+    margin-bottom: 20px;
   }
 }
 
@@ -154,6 +162,10 @@
     padding: 68px 14px 0 14px;
     max-width: 320px;
     grid-row-gap: 36px;
+  }
+
+  .about-me__text {
+    margin-bottom: 0px;
   }
 }
 

@@ -10,19 +10,19 @@ function Register() {
         <Logo />
         <h2 className="register__title">Добро пожаловать!</h2>
         <form className="register__form" name="registerForm">
-          <label className="register__field">
+          <label className="register__form-label">
             Имя
-            <input className="register__input" name="name" type="text" required/>
+            <input className="register__input" value="Виталий "name="name" type="text" required/>
           </label>
-          <span className="register__error-message">Что-то пошло не так...</span>
+          <span className="register__error-message"></span>
           <label className="register__form-label">
             E-mail
-            <input className="register__input" name="email" type="email" required/>
+            <input className="register__input" value="pochta@yandex.ru" name="email" type="email" required/>
           </label>
-          <span className="register__error-message">Что-то пошло не так...</span>
-          <label className="register__field">
+          <span className="register__error-message"></span>
+          <label className="register__form-label">
             Пароль
-            <input className="register__input" name="password" type="password" required/>
+            <input className="register__input" value=".............." name="password" type="password" required/>
           </label>
           <span className="register__error-message">Что-то пошло не так...</span>
         </form>

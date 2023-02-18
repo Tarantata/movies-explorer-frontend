@@ -22,7 +22,7 @@
   line-height: 29px;
   color: #000000;
   margin: 0;
-  padding-top: 40px;
+  padding-top: 41px;
 }
 
 .register__form {
@@ -59,19 +59,16 @@
     flex-direction: column;
     font-size: 10px;
     font-weight: 400;
-    line-height: 12px;
     color: #A0A0A0;
     cursor: pointer;
-    margin-bottom: 8px;
 }
 
 .register__error-message {
   font-size: 10px;
   font-weight: 400;
-  line-height: 12px;
+  height: 16px;
   color: #EE3465;
-  margin: 0;
-  padding-bottom: 5px;
+  margin: 5px;
 }
 
 .register__submit-button {
@@ -137,6 +134,16 @@
   opacity: .6;
 }
 
+@media (max-width: 800px) {
+  .register__section {
+    padding-top: 230px;
+  }
+
+ .register__form {
+    margin-bottom: 124px;
+ }
+}
+
 @media (max-width: 460px) {
   .register__section {
     max-width: 260px;
@@ -145,12 +152,12 @@
   }
 
   .register__title {
-    padding-top: 52px;
+    padding-top: 51px;
   }
 
   .register__form {
     padding-top: 78px;
-    margin-bottom: 215px;
+    margin-bottom: 212px;
   }
 
   .register__submit-button {

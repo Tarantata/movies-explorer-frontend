@@ -91,6 +91,10 @@
   .portfolio__link {
     font-size: 16px;
   }
+
+  .portfolio__title {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 320px) {

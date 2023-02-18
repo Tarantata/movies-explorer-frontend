@@ -6,7 +6,7 @@
   right: 0;
   top: 0;
   z-index: 1;
-  background-color: #E8E8E8;
+  background-color: #FAFAFA;
   visibility: hidden;
 }
 
@@ -90,9 +90,17 @@
   opacity: 0.8;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 769px) {
   .burger-menu {
     visibility: hidden;
+  }
+
+  .burger-menu__link {
+    margin-bottom: 24px;
+  }
+
+  .burger-menu__link:not(:last-child) {
+    margin-bottom: 30px;
   }
 }
 
@@ -108,8 +116,12 @@
     top: 17px;
   }
 
+  .burger-menu__link {
+    margin-bottom: 26px;
+  }
+
   .burger-menu__link-case {
-    margin-top: 144px;
+    margin-top: 146px;
   }
 
   .burger-menu__link_active {
@@ -117,7 +129,7 @@
   }
 
   .burger-menu__link:not(:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   .burger-menu__link-profile {

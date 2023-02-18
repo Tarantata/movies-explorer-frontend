@@ -13,12 +13,12 @@ function Login() {
             E-mail
             <input className="login__input" name="email" type="email" required/>
           </label>
-          <span className="login__error-message">Что-то пошло не так...</span>
+          <span className="login__error-message"></span>
           <label className="login__form-label">
             Пароль
             <input className="login__input" name="password" type="password" required/>
           </label>
-          <span className="login__error-message">Что-то пошло не так...</span>
+          <span className="login__error-message"></span>
         </form>
         <button className="login__submit-button" type="submit">Войти</button>
         <span className="login__info-message"></span>

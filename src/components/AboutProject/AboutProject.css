@@ -129,7 +129,7 @@
 
 @media (max-width: 400px) {
   .about-project__table {
-    grid-template-columns: 110px 1fr;
+    grid-template-columns: 100px 1fr;
   }
 }
 
@@ -161,17 +161,16 @@
 
   .about-project__table {
     padding-top: 35px;
-    justify-items: start;
   }
 
   .about-project__limit {
     font-size: 11px;
-    padding: 9px 27px;
+    padding: 9px 12px;
   }
 
   .about-project__limit-content {
     font-size: 11px;
-    padding: 8px 26px;
+    padding: 8px 12px;
   }
 }
 
