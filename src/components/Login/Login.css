@@ -78,7 +78,7 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
-  margin: 0;
+  margin: 20px;
   padding: 0;
   color: #000000;
 }
@@ -100,9 +100,9 @@
   opacity: .6;
 }
 
-.login__submit-button_invalid {
+.login__submit-button:disabled {
+  opacity: .6;
   cursor: default;
-  opacity: .6
 }
 
 .login__signup {

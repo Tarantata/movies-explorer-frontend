@@ -1,36 +1,65 @@
-import './SearchForm.css';
-import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import lens from '../../images/lens.svg';
+import "./SearchForm.css";
+import { useEffect, useState } from "react";
+import Checkbox from "../Checkbox/Checkbox";
+import lens from "../../images/lens.svg";
 
-function SearchForm() {
+function SearchForm(props) {
+   const [keyWord, setKeyWord] = useState("");
 
-  return (
-    <section className="search">
-      <div className="search__case">
-        <form className="search__form">
-          <img src={lens} className="search__lens" alt="Лупа"/>
-          <input
-            className="search__input"
-            type="text"
-            required
-            placeholder="Фильм"
-            minLength="2"
-            maxLength="60"
-          />
-          <button
-            className="search__button"
-            type="submit"
-          >
-          </button>
-          <span className="error-message"></span>
-          <FilterCheckbox />
-        </form>
-        <div className="search__line">
-          <hr className="search__line_item" />
-        </div>
-      </div>
-    </section>
-  );
+   const handleChangeKeyWord = (evt) => {
+      setKeyWord(evt.target.value);
+   };
+
+   const handleMovieDuration = (evt) => {
+      const isShortMovie = evt.target.checked;
+      props.setCheckbox(isShortMovie);
+      props.handleSearch(keyWord, isShortMovie);
+   };
+
+   const handleSubmit = (evt) => {
+      evt.preventDefault();
+      props.handleSearch(keyWord, props.checkbox);
+   };
+
+   useEffect(() => {
+      setKeyWord(props.defaultKey);
+      props.setCheckbox(
+         JSON.parse(localStorage.getItem("shortMovies")) || false
+      );
+   }, []);
+
+   return (
+      <section className="search" onSubmit={handleSubmit}>
+         <div className="search__case">
+            <form className="search__form" name="searchForm">
+               <img src={lens} className="search__lens" alt="Лупа" />
+               <input
+                  className="search__input"
+                  name="movie"
+                  value={keyWord}
+                  onChange={handleChangeKeyWord}
+                  type="text"
+                  required
+                  placeholder="Фильм"
+               />
+               <button
+                  className="search__button"
+                  aria-label="поиск фильмов"
+                  type="submit"
+                  onSubmit={handleSubmit}
+               ></button>
+               <span className="error-message"></span>
+               <Checkbox
+                  checkbox={props.checkbox}
+                  handleMovieDuration={handleMovieDuration}
+               />
+            </form>
+            <div className="search__line">
+               <hr className="search__line_item" />
+            </div>
+         </div>
+      </section>
+   );
 }
 
 export default SearchForm;

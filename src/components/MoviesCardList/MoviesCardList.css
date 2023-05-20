@@ -21,7 +21,7 @@
 
 .movies-cards__item {
   display: flex;
-  width: 100%;
+  max-width: 364px;
   justify-content: center;
 }
 
@@ -46,9 +46,16 @@
   font-weight: 500;
 }
 
+.movies-cards__more-button_hidden {
+  display: none;
+}
+
 .movies-cards__empty {
-  max-width: 1280px;
-  height: 158px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #3456F3;
+  background-color: #F8F8F8;
 }
 
 @media (max-width: 892px) {

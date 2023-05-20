@@ -1,39 +1,57 @@
-import './MoviesCardList.css';
-import { useLocation } from 'react-router-dom';
-import MoviesCard from '../MoviesCard/MoviesCard';
+import "./MoviesCardList.css";
+import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList() {
-  const location = useLocation();
-  return (
-    <section className="movies-cards">
-      <>
-        <ul className="movies-cards__list">
-          <li className="movies-cards__item">
-            <MoviesCard />
-          </li>
-          <li className="movies-cards__item">
-            <MoviesCard />
-          </li>
-          <li className="movies-cards__item">
-            <MoviesCard />
-          </li>
-          <li className="movies-cards__item">
-            <MoviesCard />
-          </li>
-          <li className="movies-cards__item">
-            <MoviesCard />
-          </li>
-        </ul>
-        { location.pathname === '/saved-movies' ?
-        <div className="movies-cards__empty"></div>
-        :
-        <div className="movies-cards__more">
-          <button className="movies-cards__more-button">Ещё</button>
-        </div>
-        }
-      </>
-    </section>
-  );
+function MoviesCardList(props) {
+   if (props.serverError)
+      return (
+         <span className="movies-cards__empty">
+            Во время запроса произошла ошибка. Возможно, проблема с соединением
+            или сервер недоступен. Подождите немного и попробуйте ещё раз
+         </span>
+      );
+
+   if (props.moviesCards.length === 0)
+      return <span className="movies-cards__empty">Ничего не найдено</span>;
+
+   const receivedMovies = JSON.parse(localStorage.getItem("receivedMovies"));
+
+   return (
+      <section className="movies-cards">
+         <ul className="movies-cards__list">
+            {props.moviesCards.map((card) => {
+               return (
+                  <li
+                     key={props.isSaved ? card.movieId : card.id}
+                     className="movies-cards__item"
+                  >
+                     <MoviesCard
+                        card={card}
+                        isChecked={props.isChecked}
+                        isSaved={props.isSaved}
+                        onSaveCard={props.onSaveCard}
+                        onDeleteCard={props.onDeleteCard}
+                     />
+                  </li>
+               );
+            })}
+         </ul>
+         <div className="movies-cards__more">
+            {props.isSaved ? (
+               ""
+            ) : receivedMovies?.length > props.moviesCards?.length ? (
+               <button
+                  className="movies-cards__more-button"
+                  onClick={props.showMoreCards}
+                  type="button"
+               >
+                  Ещё
+               </button>
+            ) : (
+               ""
+            )}
+         </div>
+      </section>
+   );
 }
 
 export default MoviesCardList;
