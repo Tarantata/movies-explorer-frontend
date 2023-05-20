@@ -7,6 +7,8 @@
 https://github.com/Tarantata/movies-explorer-api
 https://github.com/Tarantata/movies-explorer-frontend
 
+Ссылка на pull request:
+https://github.com/Tarantata/movies-explorer-frontend/pull/3
 
 Ссылка на макет: https://disk.yandex.ru/d/dy69-_uTRmK9Fw
 
