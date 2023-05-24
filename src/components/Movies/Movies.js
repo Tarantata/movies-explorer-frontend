@@ -35,6 +35,7 @@ function Movies(props) {
                onSaveCard={props.onSaveCard}
                onDeleteCard={props.onDeleteCard}
                serverError={props.serverError}
+               movieSearchError={props.movieSearchError}
             />
          </main>
          <Footer />

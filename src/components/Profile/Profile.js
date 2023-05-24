@@ -90,7 +90,7 @@ function Profile({ onEditProfile, onLogout, profileMessage }) {
                      ""
                   )}
                   <button
-                     disabled={!isValid}
+                     disabled={!activeEditButton}
                      onClick={() => setSettingsChange(true)}
                      className={
                         !activeEditButton

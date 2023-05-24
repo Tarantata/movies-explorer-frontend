@@ -33,12 +33,13 @@
   color: #000000;
 }
 
-.page-not-found__button {
+.page-not-found__link {
   font-size: 14px;
   font-weight: 400;
   border: none;
+  text-decoration: none;
   background-color: initial;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   margin-top: 180px;
   color: #3456F3;
@@ -46,7 +47,7 @@
   transition: opacity .3s;
 }
 
-.page-not-found__button:hover {
+.page-not-found__link:hover {
   opacity: .6;
 }
 
@@ -69,7 +70,7 @@
     font-size: 12px;
   }
 
-  .page-not-found__button {
+  .page-not-found__link {
     font-size: 12px;
     margin-top: 280px;
   }

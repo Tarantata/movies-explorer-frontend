@@ -5,8 +5,16 @@ import lens from "../../images/lens.svg";
 
 function SearchForm(props) {
    const [keyWord, setKeyWord] = useState("");
+   const [spanMessage, setSpanMessage] = useState("");
+
+   const inputValidation = (word) => {
+      !word
+         ? setSpanMessage("Нужно ввести ключевое слово!")
+         : setSpanMessage("");
+   };
 
    const handleChangeKeyWord = (evt) => {
+      inputValidation(evt.target.value);
       setKeyWord(evt.target.value);
    };
 
@@ -19,6 +27,7 @@ function SearchForm(props) {
    const handleSubmit = (evt) => {
       evt.preventDefault();
       props.handleSearch(keyWord, props.checkbox);
+      inputValidation(keyWord);
    };
 
    useEffect(() => {
@@ -31,7 +40,12 @@ function SearchForm(props) {
    return (
       <section className="search" onSubmit={handleSubmit}>
          <div className="search__case">
-            <form className="search__form" name="searchForm">
+            <form
+               className="search__form"
+               name="searchForm"
+               noValidate
+               onSubmit={handleSubmit}
+            >
                <img src={lens} className="search__lens" alt="Лупа" />
                <input
                   className="search__input"
@@ -46,14 +60,13 @@ function SearchForm(props) {
                   className="search__button"
                   aria-label="поиск фильмов"
                   type="submit"
-                  onSubmit={handleSubmit}
                ></button>
-               <span className="error-message"></span>
                <Checkbox
                   checkbox={props.checkbox}
                   handleMovieDuration={handleMovieDuration}
                />
             </form>
+            <span className="search__error-message">{spanMessage}</span>
             <div className="search__line">
                <hr className="search__line_item" />
             </div>

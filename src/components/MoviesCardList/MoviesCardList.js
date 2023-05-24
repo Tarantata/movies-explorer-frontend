@@ -2,6 +2,8 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function MoviesCardList(props) {
+   const receivedMovies = JSON.parse(localStorage.getItem("receivedMovies"));
+
    if (props.serverError)
       return (
          <span className="movies-cards__empty">
@@ -10,10 +12,9 @@ function MoviesCardList(props) {
          </span>
       );
 
-   if (props.moviesCards.length === 0)
+   if (props.movieSearchError) {
       return <span className="movies-cards__empty">Ничего не найдено</span>;
-
-   const receivedMovies = JSON.parse(localStorage.getItem("receivedMovies"));
+   }
 
    return (
       <section className="movies-cards">

@@ -10,6 +10,7 @@ function SavedMovies(props) {
    const [initialMovies, setInitialMovies] = useState([]);
    const [filteredMovies, setFilteredMovies] = useState([]);
    const [checkbox, setCheckbox] = useState(false);
+   const [movieSearchError, setMovieSearchError] = useState(false);
 
    const handleSearch = (keyWord, isShortMovie) => {
       const filteredMovies = initialMovies.filter((item) =>
@@ -29,6 +30,12 @@ function SavedMovies(props) {
       setFilteredMovies(props.moviesCards);
    }, [props.moviesCards]);
 
+   useEffect(() => {
+      !filteredMovies.length
+         ? setMovieSearchError(true)
+         : setMovieSearchError(false);
+   }, [filteredMovies]);
+
    return (
       <>
          <Header />
@@ -46,6 +53,7 @@ function SavedMovies(props) {
                moviesCards={filteredMovies}
                onDeleteCard={props.onDeleteCard}
                serverError={props.serverError}
+               movieSearchError={movieSearchError}
             />
          </main>
          <Footer />

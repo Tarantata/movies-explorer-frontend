@@ -3,6 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b84855e7-bd6a-475f-a726-370d7bb4f4bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Movies/Movies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Movies/Movies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoviesCardList/MoviesCardList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageNotFound/PageNotFound.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageNotFound/PageNotFound.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PageNotFound/PageNotFound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PageNotFound/PageNotFound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProtectedRoute/ProtectedRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProtectedRoute/ProtectedRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SavedMovies/SavedMovies.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchForm/SearchForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/useValidation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/useValidation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +114,9 @@
       <workItem from="1684496397037" duration="48000" />
       <workItem from="1684496456283" duration="17809000" />
       <workItem from="1684526556474" duration="7625000" />
-      <workItem from="1684569495623" duration="23444000" />
+      <workItem from="1684569495623" duration="24738000" />
+      <workItem from="1684687412051" duration="10550000" />
+      <workItem from="1684698757680" duration="27695000" />
     </task>
     <servers />
   </component>

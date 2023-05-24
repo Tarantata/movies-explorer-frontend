@@ -6,6 +6,7 @@ import ProtectedRoutes from "../ProtectedRoute/ProtectedRoutes";
 import Main from "../Main/Main";
 import mainApi from "../../utils/MainApi";
 import Movies from "../Movies/Movies";
+// import * as moviesApi from "../../utils/MoviesApi";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Login from "../Login/Login";
@@ -34,9 +35,10 @@ function App() {
    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
    const [movies, setMovies] = useState([]);
    const [savedMovies, setSavedMovies] = useState([]);
-   const navigate = useNavigate();
    const [moreCards, setMoreCards] = useState(0);
    const [serverError, setServerError] = useState(false);
+   const [movieSearchError, setMovieSearchError] = useState(false);
+   const navigate = useNavigate();
 
    const handleRegister = useCallback(async (name, email, password) => {
       try {
@@ -99,39 +101,89 @@ function App() {
       getSavedMovies();
    }, [loggedIn]);
 
-   useEffect(() => {
-      if (loggedIn) {
-         try {
-            getApiMovies().then((movies) =>
-               localStorage.setItem("initialMovies", JSON.stringify(movies))
-            );
-         } catch (e) {
-            console.error(e);
-            setServerError(true);
-         }
+   // useEffect(() => {
+   //    if (loggedIn) {
+   //       try {
+   //          getApiMovies().then((movies) =>
+   //             localStorage.setItem("initialMovies", JSON.stringify(movies))
+   //          );
+   //       } catch (e) {
+   //          console.error(e);
+   //          setServerError(true);
+   //       }
+   //    }
+   // }, [loggedIn]);
+
+   // const searchMovies = (keyWord, isShortMovie) => {
+   //    setIsLoading(true);
+   //    if (keyWord) {
+   //       const initialMovies = JSON.parse(
+   //          localStorage.getItem("initialMovies")
+   //       );
+   //       const requestedMovies = initialMovies.filter((item) =>
+   //          item.nameRU.toLowerCase().includes(keyWord.toLowerCase())
+   //       );
+   //       const receivedMovies = isShortMovie
+   //          ? requestedMovies.filter((item) => item.duration <= short_Movie)
+   //          : requestedMovies;
+   //       localStorage.setItem("receivedMovies", JSON.stringify(receivedMovies));
+   //       localStorage.setItem("searchKeyWord", keyWord);
+   //       localStorage.setItem("shortMovie", isShortMovie);
+   //       handleResize();
+   //    }
+   //    setIsLoading(false);
+   // }
+
+   const getMovies = (initialMovies, isShortMovie, keyWord) => {
+      const requestedMovies = initialMovies.filter((item) =>
+         item.nameRU.toLowerCase().includes(keyWord.toLowerCase())
+      );
+
+      const receivedMovies = isShortMovie
+         ? requestedMovies.filter((item) => item.duration <= short_Movie)
+         : requestedMovies;
+
+      localStorage.setItem("receivedMovies", JSON.stringify(receivedMovies));
+      localStorage.setItem("searchKeyWord", keyWord);
+      localStorage.setItem("shortMovie", isShortMovie);
+      setMovies(receivedMovies);
+      setMovieSearchError(false);
+
+      if (!receivedMovies.length) {
+         setMovieSearchError(true);
       }
-   }, [loggedIn]);
+   };
 
    const searchMovies = (keyWord, isShortMovie) => {
-      setIsLoading(true);
-
       if (keyWord) {
-         const initialMovies = JSON.parse(
-            localStorage.getItem("initialMovies")
-         );
-         const requestedMovies = initialMovies.filter((item) =>
-            item.nameRU.toLowerCase().includes(keyWord.toLowerCase())
-         );
-         const receivedMovies = isShortMovie
-            ? requestedMovies.filter((item) => item.duration <= short_Movie)
-            : requestedMovies;
-         localStorage.setItem("receivedMovies", JSON.stringify(receivedMovies));
-         localStorage.setItem("searchKeyWord", keyWord);
-         localStorage.setItem("shortMovie", isShortMovie);
-         handleResize();
-      }
+         setIsLoading(true);
 
-      setIsLoading(false);
+         if (!localStorage.getItem("initialMovies")) {
+            getApiMovies()
+               .then((movies) => {
+                  if (movies) {
+                     localStorage.setItem(
+                        "initialMovies",
+                        JSON.stringify(movies)
+                     );
+                     getMovies(movies, isShortMovie, keyWord);
+                     setIsLoading(false);
+                  } else {
+                     return Error("Фильмы не найдены");
+                  }
+               })
+               .catch(() => {
+                  setIsLoading(false);
+                  setServerError(true);
+               });
+         } else {
+            const initialMoviesFromStore = JSON.parse(
+               localStorage.getItem("initialMovies")
+            );
+            getMovies(initialMoviesFromStore, isShortMovie, keyWord);
+            setIsLoading(false);
+         }
+      }
    };
 
    const handleProfile = async (name, email) => {
@@ -150,9 +202,21 @@ function App() {
       }
    };
 
-   const checkScreenSize = () => {
-      setScreenWidth(window.innerWidth);
-   };
+   // const checkScreenSize = () => {};
+
+   useEffect(() => {
+      let timeoutId = null;
+      const resizeListener = () => {
+         clearTimeout(timeoutId);
+         timeoutId = setTimeout(() => setScreenWidth(window.innerWidth), 500);
+      };
+
+      window.addEventListener("resize", resizeListener);
+
+      return () => {
+         window.removeEventListener("resize", resizeListener);
+      };
+   }, []);
 
    const handleResize = () => {
       const receivedMovies = JSON.parse(localStorage.getItem("receivedMovies"));
@@ -173,8 +237,10 @@ function App() {
    };
 
    useEffect(() => {
-      window.addEventListener("resize", checkScreenSize);
+      // window.addEventListener("resize", checkScreenSize);
       handleResize();
+      // window.removeEventListener("resize", checkScreenSize);
+      console.log("resize");
    }, [screenWidth]);
 
    const showMoreCards = () => {
@@ -260,6 +326,7 @@ function App() {
                            }
                            isLoading={isLoading}
                            serverError={serverError}
+                           movieSearchError={movieSearchError}
                         />
                      }
                      path="movies"
@@ -272,6 +339,7 @@ function App() {
                            moviesCards={savedMovies}
                            isLoading={isLoading}
                            serverError={serverError}
+                           movieSearchError={movieSearchError}
                         />
                      }
                      path="saved-movies"
